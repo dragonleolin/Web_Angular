@@ -1,128 +1,121 @@
-  /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
 
 body {
-    background-image: url("./assets/bg.png");
+  background-image: url("./assets/bg.png");
+}
+#main {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  height: 900px;
+}
+
+$main_color: #cde2e0;
+$black: #2d3a3a;
+$yellow: #ffc408;
+$grey: #979d9d;
+$white: #ffffff;
+$big_text: 32px;
+$title: 28px;
+$content: 24px;
+
+//RWD 樣式設定
+$pc-media: 960px;
+$pcs-media: 959px;
+$pad-media: 760px;
+$pads-media: 759px;
+$phone-media: 480px;
+$phones-media: 479px;
+
+//電腦
+@mixin pc-width() {
+  @media all and (min-width: $pc-media) {
+    @content;
   }
-  #main {
+}
+//平板
+@mixin pad-width() {
+  @media all and (min-width: $pad-media) and (max-width: $pcs-media) {
+    @content;
+  }
+}
+//小平板
+@mixin small-pad-width() {
+  @media all and (min-width: $phone-media) and (max-width: $pads-media) {
+    @content;
+  }
+}
+//手機
+@mixin phone-width() {
+  @media all and (max-width: $phones-media) {
+    @content;
+  }
+}
+
+.linear {
+  background: linear-gradient(115deg, #979d9d 50%, transparent 50%) center
+      center / 100% 100%,
+    #cde2e0 center center / 100% 100%;
+}
+
+.shadow {
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.6) !important;
+}
+
+header {
+  background-color: #674ea7;
+  opacity: 0.6;
+  cursor: pointer;
+  @include phone-width {
+    min-height: 10vh;
+  }
+
+  .navbar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
 
-
-  }
-
-  .content {
-    width: 100%;
-    height: 900px;
-  }
-
-  $main_color: #cde2e0;
-  $black: #2d3a3a;
-  $yellow: #ffc408;
-  $grey: #979d9d;
-  $white: #ffffff;
-  $big_text: 32px;
-  $title: 28px;
-  $content: 24px;
-
-  //RWD 樣式設定
-  $pc-media: 960px;
-  $pcs-media: 959px;
-  $pad-media: 760px;
-  $pads-media: 759px;
-  $phone-media: 480px;
-  $phones-media: 479px;
-
-  //電腦
-  @mixin pc-width() {
-    @media all and (min-width: $pc-media) {
-      @content;
-    }
-  }
-  //平板
-  @mixin pad-width() {
-    @media all and (min-width: $pad-media) and (max-width: $pcs-media) {
-      @content;
-    }
-  }
-  //小平板
-  @mixin small-pad-width() {
-    @media all and (min-width: $phone-media) and (max-width: $pads-media) {
-      @content;
-    }
-  }
-  //手機
-  @mixin phone-width() {
-    @media all and (max-width: $phones-media) {
-      @content;
-    }
-  }
-
-  .linear {
-    background: linear-gradient(115deg, #979d9d 50%, transparent 50%) center
-        center / 100% 100%,
-      #cde2e0 center center / 100% 100%;
-  }
-
-  .shadow {
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.6) !important;
-  }
-
-  header {
-    background-color: #674ea7;
-    opacity: 0.6;
-    cursor: pointer;
-    @include phone-width {
-      min-height: 10vh;
-    }
-
-    .navbar {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-
-      svg {
-        height: 80px;
-        width: 80px;
-        @include pad-width{
-          height: 70px;
-          width: 70px;
-        }
-        @include small-pad-width {
-          height: 70px;
+    svg {
+      height: 80px;
+      width: 80px;
+      @include pad-width {
+        height: 70px;
         width: 70px;
-        }
-        @include phone-width {
-          height: 50px;
-          width: 50px;
-        }
       }
-
-      .navbar-brand {
-        font-size: $big_text;
-        color: #5bd8ff;
-        text-shadow: 0 0 5px #5bd8ff, 0 0 10px #5bd8ff, 0 0 20px #5bd8ff,
-          0 0 40px #5bd8ff;
-        animation: neon-shine 2s linear infinite;
+      @include small-pad-width {
+        height: 70px;
+        width: 70px;
+      }
+      @include phone-width {
+        height: 50px;
+        width: 50px;
       }
     }
-  }
 
-
-  .cardContext{
-    margin: 10px auto;
-    width: 1200px;
-    column-count: 5;
-    column-width: 240px;
-    column-gap: 20px;
-
-
-    .card{
-      margin-bottom: 10px;
-      break-inside: avoid;
-      border: 1px solid #000;
+    .navbar-brand {
+      font-size: $big_text;
+      color: #5bd8ff;
+      text-shadow: 0 0 5px #5bd8ff, 0 0 10px #5bd8ff, 0 0 20px #5bd8ff,
+        0 0 40px #5bd8ff;
+      animation: neon-shine 2s linear infinite;
     }
-
-
   }
+}
 
+.cardContext {
+  margin-top:50px;
+  margin: 15px auto;
+  width: 1200px;
+  column-count: 5;
+  column-width: 240px;
+  column-gap: 20px;
 
+  .card {
+    margin-bottom: 10px;
+    break-inside: avoid;
+    border: 1px solid #000;
+  }
+}

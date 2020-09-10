@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './page/home/home.component';
 import { HeaderComponent } from './component/header/header.component';
 import { ApiService } from './api.service';
-import { OrderFormComponent } from './page/order-form/order-form.component'
+import { OrderFormComponent } from './page/order-form/order-form.component';
+import { FooterComponent } from './component/footer/footer.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
