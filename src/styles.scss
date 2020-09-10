@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+  /* You can add global styles to this file, and also import other style files */
 
 body {
     background-image: url("./assets/bg.png");
@@ -6,15 +6,15 @@ body {
   #main {
     display: flex;
     flex-direction: column;
-  
-   
+
+
   }
-  
+
   .content {
     width: 100%;
     height: 900px;
   }
-  
+
   $main_color: #cde2e0;
   $black: #2d3a3a;
   $yellow: #ffc408;
@@ -23,7 +23,7 @@ body {
   $big_text: 32px;
   $title: 28px;
   $content: 24px;
-  
+
   //RWD 樣式設定
   $pc-media: 960px;
   $pcs-media: 959px;
@@ -31,7 +31,7 @@ body {
   $pads-media: 759px;
   $phone-media: 480px;
   $phones-media: 479px;
-  
+
   //電腦
   @mixin pc-width() {
     @media all and (min-width: $pc-media) {
@@ -56,17 +56,17 @@ body {
       @content;
     }
   }
-  
+
   .linear {
     background: linear-gradient(115deg, #979d9d 50%, transparent 50%) center
         center / 100% 100%,
       #cde2e0 center center / 100% 100%;
   }
-  
+
   .shadow {
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.6) !important;
   }
-  
+
   header {
     background-color: #674ea7;
     opacity: 0.6;
@@ -74,12 +74,12 @@ body {
     @include phone-width {
       min-height: 10vh;
     }
-  
+
     .navbar {
       display: flex;
       flex-direction: row;
       justify-content: center;
-  
+
       svg {
         height: 80px;
         width: 80px;
@@ -96,7 +96,7 @@ body {
           width: 50px;
         }
       }
-  
+
       .navbar-brand {
         font-size: $big_text;
         color: #5bd8ff;
@@ -106,6 +106,23 @@ body {
       }
     }
   }
-  
-  
-  
+
+
+  .cardContext{
+    margin: 10px auto;
+    width: 1200px;
+    column-count: 5;
+    column-width: 240px;
+    column-gap: 20px;
+
+
+    .card{
+      margin-bottom: 10px;
+      break-inside: avoid;
+      border: 1px solid #000;
+    }
+
+
+  }
+
+
