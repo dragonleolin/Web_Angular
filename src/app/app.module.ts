@@ -9,6 +9,8 @@ import { HeaderComponent } from './component/header/header.component';
 import { ApiService } from './api.service';
 import { OrderFormComponent } from './page/order-form/order-form.component';
 import { FooterComponent } from './component/footer/footer.component'
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { FooterComponent } from './component/footer/footer.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
