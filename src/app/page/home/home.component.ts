@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './../../api.service';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,28 +11,25 @@ export class HomeComponent implements OnInit {
 
   productDatas: any[] = [];
 
+  token = '7GUUFd6w1Jgz-j0wGVFElQ==';
+
   constructor(
     private apiService: ApiService,
-    private router: Router
+    // private router: Router
   ) {}
 
   ngOnInit() {
+    this.apiService.send();
     this.getProduct();
+    this.apiService.getFeaturedPlaylist();
   }
+
+
 
   getProduct(){
     this.apiService.getAllProduct().subscribe((value) => {
       this.productDatas = [value];
-      this.productDatas = this.productDatas[0];
-
       console.log('this.productDatas', this.productDatas);
     });
   }
-
-  addCart(){
-    this.router.navigateByUrl('/orderForm');
-  }
-
-
-
 }

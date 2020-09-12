@@ -3,18 +3,11 @@
     <div class="card" style="width: 18rem;" *ngFor="let item of productDatas; index as i">
       <img src="data:image/jpg;base64,{{ item.imgPath }}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h2 class="card-title">{{item.name}}</h2>
-        <h5 class="card-title">{{item.location}}</h5>
-        <p class="card-text">{{item.descript}}</p>
-        <div class="d-flex">
-          <h4 class="card-title">{{item.price}}</h4>
-          <h4 class="card-title">元 / </h4>
-          <h4 class="card-title">{{item.unit}}</h4>
-        </div>
-          <button type="button" class="btn btn-outline-primary" (click)="addCart()">購買去</button>
-
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
 </div>
 
-<!-- <app-order-form></app-order-form> -->
+<app-order-form></app-order-form>
