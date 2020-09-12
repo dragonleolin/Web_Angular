@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root',
 })
 export class ApiService {
-  token = '7GUUFd6w1Jgz-j0wGVFElQ==';
+  // token = '7GUUFd6w1Jgz-j0wGVFElQ==';
 
   constructor(private http: HttpClient) {}
 
@@ -29,25 +29,26 @@ export class ApiService {
     });
   }
 
-  getFeaturedPlaylist() {
-    return this.http
-      .get('https://api.kkbox.com/v1.1/featured-playlist-categories?territory=TW&limit=10', {
-        headers: {
-          Authorization: `Bearer ` + this.token,
-        },
-      }).subscribe(value=>{
-        console.log('getFeaturedPlaylist',value);
+  // getFeaturedPlaylist() {
+  //   return this.http
+  //     .get('https://api.kkbox.com/v1.1/featured-playlist-categories?territory=TW&limit=10', {
+  //       headers: {
+  //         Authorization: `Bearer ` + this.token,
+  //       },
+  //     }).subscribe(value=>{
+  //       console.log('getFeaturedPlaylist',value);
 
-      })
-  }
+  //     })
+  // }
 
   //取得所有產品資料
   getAllProduct = () => {
     return this.http.get('http://localhost:8080/allProductQuery',{
       headers: {
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET'
+        'Content-Type': 'application/json'
       },
     });
   };
+
 }

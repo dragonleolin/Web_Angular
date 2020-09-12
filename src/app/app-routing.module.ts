@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent}from './page/home/home.component'
+import { HomeComponent } from './page/home/home.component';
+import { OrderFormComponent } from './page/order-form/order-form.component';
+
+
 
 const routes: Routes = [
   // { path: '', pathMatch: 'full', redirectTo: 'page' }, /**空白會跳轉到home */
@@ -12,12 +15,13 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'home',
-      }, /**空白會跳轉到home */
+      } /**空白會跳轉到home */,
       { path: 'home', component: HomeComponent },
+      { path: 'orderForm', component: OrderFormComponent },
+
       //利用Service來存ID
-      // { path: 'youtubePage', component: YoutubePageComponent },
-      //利用網址列的方式來存ID
       // { path: 'youtubePage/:id', component: YoutubePageComponent },
+      //利用網址列的方式來存ID
       // { path: 'playerWidgets', component: PlayerWidgetsComponent },
     ],
   },
@@ -30,6 +34,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
