@@ -10,6 +10,11 @@ import { ApiService } from './api.service';
 import { OrderFormComponent } from './page/order-form/order-form.component';
 import { FooterComponent } from './component/footer/footer.component'
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './page/login/login.component';
+import { CartComponent } from './page/cart/cart.component';
+import { SuccessComponent } from './page/success/success.component';
+import { CheckoutComponent } from './page/checkout/checkout.component';
+import { ProductListComponent } from './page/product-list/product-list.component';
 
 
 @NgModule({
@@ -18,7 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HeaderComponent,
     OrderFormComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    CartComponent,
+    SuccessComponent,
+    CheckoutComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
