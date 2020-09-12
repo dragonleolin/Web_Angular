@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CustomerInfoComponent } from './component/customer-info/customer-info.component';
+import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { PaymentInfoComponent } from './page/checkout/payment-info/payment-info.component';
 import { ReceiptInfoComponent } from './page/checkout/receipt-info/receipt-info.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
         redirectTo: 'home',
       } /**空白會跳轉到home */,
       { path: 'home', component: HomeComponent },
+      { path: 'cart', component: CartComponent },
       { path: 'orderForm', component: OrderFormComponent },
       { path: 'login', component:LoginComponent },
       { path: 'chcekout', component:CheckoutComponent },
