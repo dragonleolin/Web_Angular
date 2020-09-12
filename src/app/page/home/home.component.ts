@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   addCart(){
-    this.router.navigateByUrl('/orderForm');
+    this.router.navigateByUrl('success');
   }
 
 
