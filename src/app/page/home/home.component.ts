@@ -8,31 +8,33 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   productDatas: any[] = [];
 
-  constructor(
-    private apiService: ApiService,
-    private router: Router
-  ) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
     this.getProduct();
   }
 
-  getProduct(){
+  getProduct() {
     this.apiService.getAllProduct().subscribe((value) => {
       this.productDatas = [value];
       this.productDatas = this.productDatas[0];
 
-      console.log('this.productDatas', this.productDatas);
+      // console.log('this.productDatas', this.productDatas);
     });
   }
 
-  addCart(){
+  addCart(
+    id: number,
+    name: string,
+    price: number,
+    unit: string,
+    imgPath: string
+  ) {
+    // console.log('addCart:', imgPath);
+
+    this.apiService.setCartDetail(id, name, price, unit, imgPath);
     this.router.navigateByUrl('cart');
   }
-
-
-
 }

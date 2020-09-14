@@ -11,7 +11,11 @@
           <h4 class="card-title">元 / </h4>
           <h4 class="card-title">{{item.unit}}</h4>
         </div>
-          <button type="button" class=" button btn-outline-primary" (click)="addCart()">加入購物車</button>
+          <button type="button" class=" button btn-outline-primary" (click)="addCart(item.id,
+          item.name,
+          item.price,
+          item.unit,
+          item.imgPath)">加入購物車</button>
       </div>
     </div>
 </div>
