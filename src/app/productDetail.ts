@@ -1,4 +1,4 @@
-export class ProductDetail {
+export interface ProductDetail {
   id: number;
   name: string;
   price: number;
