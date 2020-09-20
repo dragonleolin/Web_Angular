@@ -1,6 +1,8 @@
 import { ProductDetail } from "./../../productDetail";
 import { ApiService } from "./../../api.service";
 import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-cart",
@@ -8,40 +10,81 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./cart.component.scss"],
 })
 export class CartComponent implements OnInit {
-  cartProduct: ProductDetail;
-  cartTemp = [];
-  productId: number;
-  productName: string;
-  productPrice: number;
-  productUnit: string;
-  productImgPath: string;
-
-  constructor(private apiService: ApiService) {}
+  cartTemp: ProductDetail[] = [];
+  s_price = 0;
+  sub_total = 0;
+  total =0;
+  constructor(private apiService: ApiService,private router: Router,private http: HttpClient) {}
 
   ngOnInit() {
-    this.addCart();
-    console.log('this.cartTemp',this.cartTemp);
-
-
+    this.getCartData();
   }
 
-  addCart() {
-    this.apiService.setProductDetail$.subscribe((res) => {
-      console.log("res:", res);
-      const temp: ProductDetail = {
-        id: res.id,
-        name: res.name,
-        price: res.price,
-        unit: res.unit,
-        imgPath: res.imgPath,
-      };
-      this.cartTemp.push(temp);
+  getCartData() {
+    if (localStorage.getItem("cart")) {
+      this.sub_total = 0;
+      this.cartTemp = JSON.parse(localStorage.getItem("cart"));
+      for(let i =0;i<this.cartTemp.length;i++){
+        this.s_price = this.cartTemp[i]['price'] * this.cartTemp[i]['qty'];
+        this.sub_total += this.s_price;
+      }
+    }
+    this.total = this.sub_total+ 300;
+  }
+
+  deleteOne(name: string) {
+    const one = this.cartTemp.findIndex(item => item.name === name);
+    this.cartTemp.splice(one, 1);
+    localStorage.setItem("cart", JSON.stringify(this.cartTemp));
+    this.getCartData();
+  }
+
+
+  addQty(name: string){
+    this.cartTemp.findIndex(item => {
+      if(item.name === name && item.qty <= 9){
+        return item.qty += 1;
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(this.cartTemp));
+    this.getCartData();
+  }
+  recreaseQty(name: string){
+    this.cartTemp.findIndex(item => {
+      if(item.name === name && item.qty >=2){
+        return item.qty -= 1;
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(this.cartTemp));
+    this.getCartData();
+  }
+
+  checkout(){
+    let url = 'http://localhost:8080/orderItem';
+    for(let i =0;i<this.cartTemp.length;i++){
+      let body = JSON.stringify({
+        qty: this.cartTemp[i]['qty'],
+        order_id: 11,
+        product_id: this.cartTemp[i]['id']
+      })
+      console.log('body:', body);
+
+      this.http.post<any>(url, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      body,
+      options: {
+        observe: 'response' as 'response',
+      }
+    }).subscribe(res=>{
+      console.log('checkout:',res);
+
     });
 
-    // console.log('this.productId:',this.productId);
-    // console.log('this.productName:',this.productName);
-    // console.log('this.productPrice:',this.productPrice);
-    // console.log('this.productUnit:',this.productUnit);
-    // console.log('this.productImgPath:',this.productImgPath);
+
+    }
   }
+
 }

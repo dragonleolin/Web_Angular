@@ -8,14 +8,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
   // token = '7GUUFd6w1Jgz-j0wGVFElQ==';
-  private getCartData: ProductDetail = {
-    id: null,
-    name: '',
-    price: null,
-    unit: '',
-    imgPath: ''
-  };
-  setProductDetail$ = new BehaviorSubject<ProductDetail>(this.getCartData);
+  // private getCartData: ProductDetail = {
+  //   id: null,
+  //   name: '',
+  //   price: null,
+  //   unit: '',
+  //   imgPath: ''
+  // };
+  cartTemp = [];
+  // setProductDetail$ = new BehaviorSubject<ProductDetail>(this.getCartData);
 
   constructor(private http: HttpClient) {}
 
@@ -57,7 +58,7 @@ export class ApiService {
     name: string,
     price: number,
     unit: string,
-    imgPath: string
+    imgPath: string,
   ) {
     const cartData = {
       id: id,
@@ -65,9 +66,19 @@ export class ApiService {
       price: price,
       unit: unit,
       imgPath: imgPath,
+      qty: 1
     };
+
+    if (localStorage.getItem('cart')) {
+      this.cartTemp = JSON.parse(localStorage.getItem("cart"));
+    }
+
+    this.cartTemp.push(cartData);
+    console.log('this.cartTemp:',this.cartTemp );
+
+    localStorage.setItem('cart', JSON.stringify(this.cartTemp));
     // console.log('已設定', cartData);
-    this.setProductDetail$.next(cartData);
+    // this.setProductDetail$.next(cartData);
   }
 
   //取得所有產品資料

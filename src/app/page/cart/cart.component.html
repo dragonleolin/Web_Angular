@@ -2,35 +2,24 @@
   <article class="font-dark-green">
     <h2 class="title">您的購物車</h2>
     <div class="cart-list">
-      <div class="cart-item">
-        <img src="" alt="">
+      <div class="cart-item" *ngFor="let item of cartTemp; index as i">
+        <img src="data:image/jpg;base64,{{ item.imgPath }}" alt="...">
         <div class="description">
           <div class="content">
-              <p>蘋果 <br> NT$ 20</p>
+              <p>{{item.name}} <br> {{item.price}}  /  {{item.unit}}</p>
           </div>
         </div>
-        <p><span>-</span><span>2</span><span>+</span></p>
-        <p>NT$ 900</p> 
-        <p class="desktop"><i class="fas fa-trash-alt"></i></p>
-      </div>
-      <div class="cart-item">
-        <img src="" alt="">
-        <div class="description">
-          <div class="content">
-              <p>蘋果 <br> NT$ 20</p>
-          </div>
-        </div>
-        <p><span>-</span><span>2</span><span>+</span></p>
-        <p>NT$ 900</p> 
-        <p class="desktop"><i class="fas fa-trash-alt"></i></p>
+        <p><span (click)="recreaseQty(item.name)">-</span><span >{{item.qty}}</span><span (click)="addQty(item.name)">+</span></p>
+        <p class="pre_price">NT$ {{item.price*item.qty}}</p>
+        <p class="desktop" (click)="deleteOne(item.name)"><i class="fas fa-trash-alt"></i></p>
       </div>
     </div>
   </article>
   <aside class="bg-dark-green font-light-green">
     <h2>訂單摘要</h2>
-    <p>小計: <span>NT$2,700</span></p>
-    <p>運費: <span>NT$300</span></p>
-    <p class="total">總計: <span>NT3,000</span></p>
-    <p class="checkout">   結帳去</p>
+    <p>小計: <span>NT$ {{sub_total}}</span></p>
+    <p>運費: <span>NT$ 300</span></p>
+    <p class="total">總計: <span>NT$ {{total}}</span></p>
+    <p class="checkout"(click)="checkout()">   結帳去</p>
   </aside>
 </div>

@@ -4,4 +4,5 @@ export interface ProductDetail {
   price: number;
   unit: string;
   imgPath: string;
+  qty: number;
 }
