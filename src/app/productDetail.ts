@@ -1,8 +1,8 @@
 export interface ProductDetail {
   id: number;
+  qty: number;
   name: string;
   price: number;
   unit: string;
   imgPath: string;
-  qty: number;
 }
