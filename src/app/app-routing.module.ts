@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CustomerInfoComponent } from './component/customer-info/customer-info.component';
+import { CustomerInfoComponent } from './page/checkout/customer-info/customer-info.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
 import { PaymentInfoComponent } from './page/checkout/payment-info/payment-info.component';

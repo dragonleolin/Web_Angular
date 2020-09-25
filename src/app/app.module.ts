@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './page/login/login.component';
 import { CartComponent } from './page/cart/cart.component';
 import { CheckoutComponent } from './page/checkout/checkout.component';
-import { CustomerInfoComponent } from './component/customer-info/customer-info.component';
+import { CustomerInfoComponent } from './page/checkout/customer-info/customer-info.component';
 import { PaymentInfoComponent } from './page/checkout/payment-info/payment-info.component';
 import { ReceiptInfoComponent } from './page/checkout/receipt-info/receipt-info.component';
 import { SuccessComponent } from './page/success/success.component';
