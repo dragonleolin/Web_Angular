@@ -40,11 +40,11 @@ const routes: Routes = [
       // { path: 'playerWidgets', component: PlayerWidgetsComponent },
     ],
   },
-  {
-    path: '**',
-    pathMatch: 'full',
-    redirectTo: 'home',
-  } /**萬用路由:隨便輸入都會到home */,
+  // {
+  //   path: '**',
+  //   pathMatch: 'full',
+  //   redirectTo: 'home',
+  // } /**萬用路由:隨便輸入都會到home */,
 ];
 
 @NgModule({

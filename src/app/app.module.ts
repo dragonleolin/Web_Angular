@@ -17,6 +17,7 @@ import { CustomerInfoComponent } from './page/checkout/customer-info/customer-in
 import { PaymentInfoComponent } from './page/checkout/payment-info/payment-info.component';
 import { ReceiptInfoComponent } from './page/checkout/receipt-info/receipt-info.component';
 import { SuccessComponent } from './page/success/success.component';
+import { CheckoutAsideComponent } from './component/checkout-aside/checkout-aside.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SuccessComponent } from './page/success/success.component';
     CustomerInfoComponent,
     PaymentInfoComponent,
     ReceiptInfoComponent,
-    SuccessComponent
+    SuccessComponent,
+    CheckoutAsideComponent
   ],
   imports: [
     BrowserModule,
