@@ -1,3 +1,4 @@
+import { CheckoutAsideComponent } from './../../component/checkout-aside/checkout-aside.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,17 +9,17 @@ import { ReceiptInfoComponent } from './receipt-info/receipt-info.component';
 import { CheckoutComponent } from './checkout.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CheckoutComponent,
+    CustomerInfoComponent,
+    PaymentInfoComponent,
+    ReceiptInfoComponent,
+    CheckoutAsideComponent
+  ],
   imports: [
     CommonModule,
     CheckoutRoutingModule,
-   
+
   ],
-  // declarations: [
-  //   CheckoutComponent,
-  //   CustomerInfoComponent,
-  //   PaymentInfoComponent,
-  //   ReceiptInfoComponent
-  // ]
 })
 export class CheckoutModule { }
