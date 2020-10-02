@@ -7,16 +7,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  // token = '7GUUFd6w1Jgz-j0wGVFElQ==';
-  // private getCartData: ProductDetail = {
-  //   id: null,
-  //   name: '',
-  //   price: null,
-  //   unit: '',
-  //   imgPath: ''
-  // };
   cartTemp = [];
-  // setProductDetail$ = new BehaviorSubject<ProductDetail>(this.getCartData);
+  productDatas = [];
+  showPageList = [];
+  pageNo = 1; //当前页码
+  preShow = false; //上一页
+  nextShow = true; //下一页
+  pageSize = 8; //单页显示数
+  totalPage = 0; //总页数
+  pageSizes = [];
+  curPage = 1; //当前页
 
   constructor(private http: HttpClient) {}
 
@@ -90,4 +90,82 @@ export class ApiService {
       },
     });
   };
+
+  //資料分頁
+  getPageList(productDatas,pageSizes) {
+    this.productDatas = productDatas;
+    this.pageSizes = pageSizes;
+    this.totalPage = productDatas.length / this.pageSize;
+    if (productDatas.length >= 1) {
+      if (productDatas.length % this.pageSize === 0) {
+        this.pageNo = Math.floor(productDatas.length / this.pageSize);
+        console.log('this.pageNo1:', this.pageNo);
+      } else {
+        this.pageNo = Math.floor(productDatas.length / this.pageSize) + 1;
+        console.log('this.pageNo2:', this.pageNo);
+      }
+      if (this.pageNo < this.curPage) {
+        this.curPage = this.curPage - 1;
+      }
+      if (this.pageNo === 1 || this.curPage === this.pageNo) {
+        this.preShow = this.curPage !== 1;
+        console.log('this.preShow1:', this.preShow);
+        this.nextShow = false;
+      } else {
+        this.preShow = this.curPage !== 1;
+        console.log('this.preShow2:', this.preShow);
+        this.nextShow = true;
+      }
+    } else {
+      productDatas.length = 0;
+      this.pageNo = 1;
+      this.curPage = 1;
+    }
+    console.log('this.curPage:', this.curPage, '-', 'this.pageSize:', this.pageSize);
+    this.showPageList = productDatas.slice((this.curPage - 1) * this.pageSize, (this.curPage) * this.pageSize);
+    console.log('this.showPageList:', this.showPageList);
+  }
+
+    //点击上一页方法
+    showPrePage() {
+      this.curPage -= 1;
+      if (this.curPage >= 1) {
+        this.getPageList(this.productDatas, this.pageSizes);
+      } else {
+        this.curPage = 1;
+      }
+    }
+    //点击下一页方法
+    showNextPage() {
+      this.curPage += 1;
+      console.log('showNextPage:', this.curPage);
+
+      if (this.curPage <= this.pageNo) {
+        this.getPageList(this.productDatas, this.pageSizes);
+      } else {
+        this.curPage = this.pageNo;
+      }
+    }
+
+    //自定义跳页方法
+    onChangePage(value) {
+      if (value > this.pageNo) {
+        confirm('超出最大页数');
+      } else if (value <= 0) {
+        this.curPage = 1;
+        this.getPageList(this.productDatas, this.pageSizes);
+      } else {
+        this.curPage = value;
+        this.getPageList(this.productDatas, this.pageSizes);
+      }
+    }
+    //改变每页显示方法
+    onChangePageSize(value) {
+      this.pageSize = value;
+      this.curPage = 1;
+      this.getPageList(this.productDatas, this.pageSizes);
+    }
+
+
+
 }

@@ -1,6 +1,6 @@
 
 <div class="cardContext">
-    <div class="card" style="width: 18rem;" *ngFor="let item of productDatas; index as i">
+    <div class="card" style="width: 18rem;" *ngFor="let item of showPageList; index as i">
       <img src="data:image/jpg;base64,{{ item.imgPath }}" class="card-img-top" alt="...">
       <div class="card-body">
         <h2 class="card-title">{{item.name}}</h2>
@@ -18,6 +18,18 @@
           item.imgPath)">加入購物車</button>
       </div>
     </div>
+
+    <div>
+      <button type="button" [disabled]="!preShow" (click)="clickPrePage()">上一页</button>
+      <input type="text" (change)="clickChangePage($event.target.value)" placeholder="{{curPage}}" value="{{curPage}}">
+      <span> / {{pageNo}} 页</span>
+      <button type="button" [disabled]="!nextShow" (click)="clickNextPage()">下一页</button>
+      <span> 每页显示 : </span>
+      <select (change)="clickchangePageSize($event.target.value)">
+          <option *ngFor="let pageSize of pageSizes" value="{{pageSize}}">{{pageSize}}</option>
+      </select>
+    </div>
+    <span>共{{productDatas.length}}条</span>
   </div>
   <a [routerLink]="['/checkout']" >CHECKOUT</a>
 

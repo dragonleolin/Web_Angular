@@ -132,7 +132,7 @@ header {
   margin: 0px auto;
   overflow: hidden;
   display: flex;
-  
+
 
   /* 購物車區域 */
   article {
@@ -144,10 +144,10 @@ header {
       line-height: 65px;
       margin-bottom: 13px;
     }
-  
-   
-   
-    
+
+
+
+
     .cart-item{
       overflow: hidden;
       padding: 20px 0px;
@@ -185,7 +185,7 @@ header {
         float: left;
       }
 
-      
+
       p:first-child {
         width: 110px;
         background-size: cover;
@@ -284,19 +284,74 @@ header {
   }
 }
 
+.checkoutAside{
+    margin: 0 auto;
+    width:300px;
+    display:flex;
+    flex-direction:column;
+    font-family:微軟正黑體;
+    color: #829886;
+    margin-top:20px;
+
+    .title{
+      // margin-top:10px;
+      background-color: #e7eeea;
+      font-size: 32px;
+      // border: 1px solid #000;
+      text-align:center;
+      line-height: 72px;
+      font-weight: 600;
+    }
+     h3{
+          font-size:20px;
+          font-weight: 600;
+          line-height: 10vh;
+            }
+
+    .orderSummary{
+      border:1px solid #e7eeea;
+      margin-bottom: 20px;
+      .text{
+        display:flex;
+        justify-content: space-between;
+        margin: 10px;
+        p{
+          line-height: 30px;
+        }
+        .left{
+          text-align:left;
+        }
+        .right{
+          text-align:right;
+        }
+      }
+    }
+
+    .shoppingList{
+      border:1px solid #e7eeea;
+      .item{
+        display:flex;
+        margin: 15px 0;
+        img{
+         margin: 0 20px;
+        }
+        .text{
+          margin: auto 0;
+
+          }
+        }
+      }
+}
+
+.customerInfo{
+  width: 600px;
+  margin: 30px;
+}
 
 .checkoutPage{
   margin: 0 auto;
-  width: 1200px;
+  width: 900px;
   display: flex;
-  justify-content: space-around;
-  border: 1px solid #000;
-  .customerInfoMain{
-    
-  }
-
-
-
-
+  justify-content: center;
 
 }

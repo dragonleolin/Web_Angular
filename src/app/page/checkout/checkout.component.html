@@ -1,12 +1,8 @@
 <div class="checkoutPage">
-  <div class="checkoutAside">
-    <a [routerLink]="['/checkout/paymentInfo']" >paymentInfo</a>
-    <a [routerLink]="['/checkout/receiptInfo']" >receiptInfo</a>
-        <!-- 表單區域開始 -->
-          <router-outlet></router-outlet>
-        <!-- 表單區域結束 -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="aside">
         <app-checkout-aside></app-checkout-aside>
-
-
       </div>
 </div>
