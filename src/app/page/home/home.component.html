@@ -1,25 +1,36 @@
-
 <div class="cardContext">
-    <div class="card" style="width: 18rem;" *ngFor="let item of showPageList; index as i">
-      <img src="data:image/jpg;base64,{{ item.imgPath }}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h2 class="card-title">{{item.name}}</h2>
-        <h5 class="card-title">{{item.location}}</h5>
-        <p class="card-text">{{item.descript}}</p>
-        <div class="d-flex">
-          <h4 class="card-title">{{item.price}}</h4>
-          <h4 class="card-title">元 / </h4>
-          <h4 class="card-title">{{item.unit}}</h4>
-        </div>
-          <button type="button" class=" button btn-outline-primary" (click)="addCart(item.id,
-          item.name,
-          item.price,
-          item.unit,
-          item.imgPath)">加入購物車</button>
+  <div
+    class="card"
+    style="width: 18rem"
+    *ngFor="let item of showPageList; index as i"
+  >
+    <img
+      src="data:image/jpg;base64,{{ item.imgPath }}"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h2 class="card-title">{{ item.name }}</h2>
+      <h5 class="card-title">{{ item.location }}</h5>
+      <p class="card-text">{{ item.descript }}</p>
+      <div class="d-flex">
+        <h4 class="card-title">{{ item.price }}</h4>
+        <h4 class="card-title">元 /</h4>
+        <h4 class="card-title">{{ item.unit }}</h4>
       </div>
+      <button
+        type="button"
+        class="button btn-outline-primary"
+        (click)="
+          addCart(item.id, item.name, item.price, item.unit, item.imgPath)
+        "
+      >
+        加入購物車
+      </button>
     </div>
+  </div>
 
-    <div>
+  <!-- <div>
       <button type="button" [disabled]="!preShow" (click)="clickPrePage()">上一页</button>
       <input type="text" (change)="clickChangePage($event.target.value)" placeholder="{{curPage}}" value="{{curPage}}">
       <span> / {{pageNo}} 页</span>
@@ -29,7 +40,33 @@
           <option *ngFor="let pageSize of pageSizes" value="{{pageSize}}">{{pageSize}}</option>
       </select>
     </div>
-    <span>共{{productDatas.length}}条</span>
+    <span>共{{productDatas.length}}条</span> -->
+</div>
+<!-- 頁次 -->
+<ul class="page">
+  <button
+    type="button"
+    class="arrow"
+    [disabled]="!preShow"
+    (click)="clickPrePage()"
+  >
+    <img
+      src="https://hexschool.github.io/webLayoutTraining1st/student-week1/arrow_left.png"
+      alt=""
+    />
+  </button>
+  <div class="number">
+    <button class="pageNum" href="#" *ngFor="let i of pgaes" (click)="clickChangePage(i)">{{ i }}</button>
   </div>
-  <a [routerLink]="['/checkout']" >CHECKOUT</a>
-
+  <button
+    type="button"
+    class="arrow"
+    [disabled]="!nextShow"
+    (click)="clickNextPage()"
+  >
+    <img
+      src="https://hexschool.github.io/webLayoutTraining1st/student-week1/arrow_right.png"
+      alt=""
+    />
+  </button>
+</ul>

@@ -14,7 +14,8 @@ export class HomeComponent implements OnInit {
   preShow = false; //上一页
   nextShow = true; //下一页
   totalPage = 0; //总页数
-  pageSizes = [4, 8, 12];
+  pageSizes = [5, 8, 12];
+  pgaes = [1];
   curPage = 1; //当前页
 
   constructor(private apiService: ApiService, private router: Router) {}
@@ -36,9 +37,15 @@ export class HomeComponent implements OnInit {
       this.nextShow = this.apiService.nextShow;
       this.totalPage = this.apiService.totalPage;
       this.showPageList = this.apiService.showPageList;
-      console.log('this.showPageList:', this.showPageList);
-
+      // console.log('this.showPageList:', this.showPageList);
+      if(this.pgaes.length !== this.totalPage){
+        for (let i = 2; i <= this.totalPage; i++){
+          this.pgaes.push(i);
+        }
+      }
     });
+
+
   }
 
   clickPrePage(){

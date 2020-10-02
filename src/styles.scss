@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 
 body {
@@ -14,6 +15,8 @@ $yellow: #ffc408;
 $grey: #979d9d;
 $white: #ffffff;
 $darkBlue: #1f3547;
+$darkGreen: #3F5D45;
+$lightGreen: #718775;
 $big_text: 32px;
 $title: 28px;
 $content: 24px;
@@ -61,19 +64,15 @@ $phones-media: 479px;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.6) !important;
 }
 
-header {
-  background-color: #674ea7;
+.header {
+  // background-color: #a688f1;
   opacity: 0.6;
+  display:flex;
+  justify-content: space-between;
   cursor: pointer;
   @include phone-width {
     min-height: 10vh;
   }
-
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
     svg {
       height: 80px;
       width: 80px;
@@ -91,22 +90,47 @@ header {
       }
     }
 
-    .navbar-brand {
-      font-size: $big_text;
-      color: #5bd8ff;
-      text-shadow: 0 0 5px #5bd8ff, 0 0 10px #5bd8ff, 0 0 20px #5bd8ff,
-        0 0 40px #5bd8ff;
+    h1 {
+      margin: 20px;
+      margin-left: 100px;
+      color: $darkGreen;
+      text-shadow: 0 0 5px $lightGreen, 0 0 10px $lightGreen, 0 0 20px $lightGreen,
+        0 0 40px $lightGreen;
       animation: neon-shine 2s linear infinite;
     }
-  }
+
+    ul{
+      display:flex;
+      margin: 10px;
+      li{
+        list-style: none;
+        padding: 20px;
+        a{
+          text-decoration: none;
+          font-size:$title;
+          line-height: 30px;
+          color: $darkGreen;
+          &:hover {
+              color: $lightGreen;
+              transition: .3s;
+          }
+
+        }
+        img{
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
 }
 
 .cardContext {
   margin-top:50px;
   margin: 15px auto;
-  width: 1200px;
-  column-count: 5;
-  column-width: 240px;
+  width: 900px;
+  column-count: 3;
+  column-width: 280px;
   column-gap: 20px;
 
   .card {
@@ -123,8 +147,45 @@ header {
     padding: 0;
     cursor: pointer;
   }
+
 }
 
+//分頁按鈕
+.page{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding:10px;
+  list-style: none;
+  .arrow{
+    display: block;
+    padding: 16px;
+    border: 1px solid #EAF0ED;
+  }
+  .number{
+    display: flex;
+  }
+  button{
+    cursor: pointer;
+    &:hover {
+      border: 1px solid $lightGreen;
+      background-color: $lightGreen;
+    }
+  }
+  .pageNum {
+      display: block;
+      font-size: 20px;
+      color: #3F5D45;
+      text-align: center;
+      border: 1px solid #EAF0ED;
+      font-weight: 300;
+      text-decoration:none;
+      padding: 15px 23px;
+  }
+
+}
 
 .cartContainer{
   max-width: 1200px;

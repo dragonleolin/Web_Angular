@@ -1,5 +1,5 @@
 import { ProductDetail } from './productDetail';
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class ApiService {
   pageNo = 1; //当前页码
   preShow = false; //上一页
   nextShow = true; //下一页
-  pageSize = 8; //单页显示数
+  pageSize = 6; //单页显示数
   totalPage = 0; //总页数
   pageSizes = [];
   curPage = 1; //当前页
@@ -74,7 +74,7 @@ export class ApiService {
     }
 
     this.cartTemp.push(cartData);
-    console.log('this.cartTemp:',this.cartTemp );
+    // console.log('this.cartTemp:',this.cartTemp );
 
     localStorage.setItem('cart', JSON.stringify(this.cartTemp));
     // console.log('已設定', cartData);
@@ -95,25 +95,25 @@ export class ApiService {
   getPageList(productDatas,pageSizes) {
     this.productDatas = productDatas;
     this.pageSizes = pageSizes;
-    this.totalPage = productDatas.length / this.pageSize;
+    this.totalPage = Math.round(productDatas.length / this.pageSize);
     if (productDatas.length >= 1) {
       if (productDatas.length % this.pageSize === 0) {
         this.pageNo = Math.floor(productDatas.length / this.pageSize);
-        console.log('this.pageNo1:', this.pageNo);
+        // console.log('this.pageNo1:', this.pageNo);
       } else {
         this.pageNo = Math.floor(productDatas.length / this.pageSize) + 1;
-        console.log('this.pageNo2:', this.pageNo);
+        // console.log('this.pageNo2:', this.pageNo);
       }
       if (this.pageNo < this.curPage) {
         this.curPage = this.curPage - 1;
       }
       if (this.pageNo === 1 || this.curPage === this.pageNo) {
         this.preShow = this.curPage !== 1;
-        console.log('this.preShow1:', this.preShow);
+        // console.log('this.preShow1:', this.preShow);
         this.nextShow = false;
       } else {
         this.preShow = this.curPage !== 1;
-        console.log('this.preShow2:', this.preShow);
+        // console.log('this.preShow2:', this.preShow);
         this.nextShow = true;
       }
     } else {
@@ -121,9 +121,9 @@ export class ApiService {
       this.pageNo = 1;
       this.curPage = 1;
     }
-    console.log('this.curPage:', this.curPage, '-', 'this.pageSize:', this.pageSize);
     this.showPageList = productDatas.slice((this.curPage - 1) * this.pageSize, (this.curPage) * this.pageSize);
-    console.log('this.showPageList:', this.showPageList);
+    // console.log('this.showPageList:', this.showPageList);
+    this.gotoTop();
   }
 
     //点击上一页方法
@@ -138,7 +138,7 @@ export class ApiService {
     //点击下一页方法
     showNextPage() {
       this.curPage += 1;
-      console.log('showNextPage:', this.curPage);
+      // console.log('showNextPage:', this.curPage);
 
       if (this.curPage <= this.pageNo) {
         this.getPageList(this.productDatas, this.pageSizes);
@@ -165,6 +165,17 @@ export class ApiService {
       this.curPage = 1;
       this.getPageList(this.productDatas, this.pageSizes);
     }
+
+
+
+  // TODO: Cross browsing
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
 
 
