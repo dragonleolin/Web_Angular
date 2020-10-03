@@ -1,3 +1,4 @@
+import { Order } from './../../order';
 import { ProductDetail } from './../../productDetail';
 import { ApiService } from './../../api.service';
 import { Component, OnInit } from '@angular/core';
@@ -65,30 +66,19 @@ export class CartComponent implements OnInit {
     this.getCartData();
   }
 
+  randomNumber() {
+    const now = new Date()
+    const month = now.getMonth() + 1
+    const day = now.getDate()
+    const hour = now.getHours()
+    const minutes = now.getMinutes()
+    const seconds = now.getSeconds()
+    const orderCode =  day + hour + minutes + seconds + (Math.round(Math.random() * 1000000)).toString();
+    console.log(orderCode)
+    return orderCode;
+  }
+
   checkout() {
-    // const myHeaders = new Headers();
-    // myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-
-    // // tslint:disable-next-line: prefer-for-of
-    // for (let i = 0; i < this.cartTemp.length; i++) {
-    // const urlencoded = new URLSearchParams();
-    // urlencoded.append('qty', `${this.cartTemp[i].qty}`);
-    // urlencoded.append('order_id', '15');
-    // urlencoded.append('product_id', `${this.cartTemp[i].id}`);
-
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: myHeaders,
-    //   body: urlencoded,
-    //   redirect: 'follow',
-    // };
-
-    // fetch('http://localhost:8080/orderItem', requestOptions as RequestInit)
-    //   .then((response) => response.text())
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log('error', error));
-    // }
-
     const url = 'http://localhost:8080/orderItem';
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -97,11 +87,13 @@ export class CartComponent implements OnInit {
     const options = {
       headers,
     };
+    const orderNum = Number(this.randomNumber());
+
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.cartTemp.length; i++) {
       const body = JSON.stringify({
         qty: this.cartTemp[i]['qty'],
-        order_id: 14,
+        order_id: orderNum,
         product_id: this.cartTemp[i]['id'],
       });
       console.log('body:', body);

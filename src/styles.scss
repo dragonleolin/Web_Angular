@@ -9,7 +9,10 @@ body {
   flex-direction: column;
 }
 
-$main_color: #cde2e0;
+$main_color: #3F5D45;
+$secode_color: #718775;
+$third_color: #979d9d;
+$text_color: #2d3a3a;
 $black: #2d3a3a;
 $yellow: #ffc408;
 $grey: #979d9d;
@@ -93,9 +96,9 @@ $phones-media: 479px;
     h1 {
       margin: 20px;
       margin-left: 100px;
-      color: $darkGreen;
-      text-shadow: 0 0 5px $lightGreen, 0 0 10px $lightGreen, 0 0 20px $lightGreen,
-        0 0 40px $lightGreen;
+      color: $main_color;
+      text-shadow: 0 0 5px $secode_color, 0 0 10px $secode_color, 0 0 20px $secode_color,
+        0 0 40px $secode_color;
       animation: neon-shine 2s linear infinite;
     }
 
@@ -109,9 +112,9 @@ $phones-media: 479px;
           text-decoration: none;
           font-size:$title;
           line-height: 30px;
-          color: $darkGreen;
+          color: $main_color;
           &:hover {
-              color: $lightGreen;
+              color: $secode_color;
               transition: .3s;
           }
 
@@ -150,6 +153,17 @@ $phones-media: 479px;
 
 }
 
+.selectPage{
+  display: flex;
+  justify-content: center;
+  span{
+    color: $text_color;
+    font-size: $content;
+  }
+}
+
+
+
 //分頁按鈕
 .page{
   width: 100%;
@@ -170,14 +184,14 @@ $phones-media: 479px;
   button{
     cursor: pointer;
     &:hover {
-      border: 1px solid $lightGreen;
-      background-color: $lightGreen;
+      border: 1px solid $secode_color;
+      background-color: $secode_color;
     }
   }
   .pageNum {
       display: block;
       font-size: 20px;
-      color: #3F5D45;
+      color:$main_color;
       text-align: center;
       border: 1px solid #EAF0ED;
       font-weight: 300;
@@ -260,13 +274,17 @@ $phones-media: 479px;
         width: 107px;
         margin-right: 39px;
         .content {
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
+         display: flex;
+         flex-direction: column;
+         align-self: center;
           p:first-child {
             font-size: 24px;
             line-height: 28px;
-            margin-bottom: 3px;
+          }
+          h5{
+            display: block;
+            line-height: 20px;
+            margin-top: 20px;
           }
         }
       }
@@ -336,9 +354,14 @@ $phones-media: 479px;
         margin: 0px auto;
         font-size: 24px;
         font-weight: bold;
-        background-color: $main_color;
+        background-color: $secode_color;
         display: block;
         cursor: pointer;
+        &:hover{
+          background-color: $main_color;
+          color: $white;
+          opacity: .6;
+        }
       }
 
     }

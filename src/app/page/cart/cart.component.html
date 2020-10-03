@@ -6,7 +6,7 @@
         <img src="data:image/jpg;base64,{{ item.imgPath }}" alt="...">
         <div class="description">
           <div class="content">
-              <p>{{item.name}} <br> {{item.price}}  /  {{item.unit}}</p>
+              <h5>{{item.name}}</h5><p>{{item.price}}  /  {{item.unit}}</p>
           </div>
         </div>
         <p><span (click)="recreaseQty(item.name)">-</span><span >{{item.qty}}</span><span (click)="addQty(item.name)">+</span></p>

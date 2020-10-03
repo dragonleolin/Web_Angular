@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   preShow = false; //上一页
   nextShow = true; //下一页
   totalPage = 0; //总页数
-  pageSizes = [5, 8, 12];
+  pageSizes = [6, 8, 12];
   pgaes = [1];
   curPage = 1; //当前页
 
