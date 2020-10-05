@@ -5,4 +5,5 @@ export interface ProductDetail {
   price: number;
   unit: string;
   imgPath: string;
+  order_id: string;
 }

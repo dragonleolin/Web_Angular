@@ -1,53 +1,103 @@
-
-  <div class="customerInfo">
-    <div class="title">
-      <h2>運送</h2>
-      <div class="progress">
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style="width: 33%"
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
+<div class="customerInfo">
+  <div [hidden]="submitted">
+    <h1>訂購單</h1>
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        style="width: 33%"
+        aria-valuenow="25"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
     </div>
+    <form (ngSubmit)="onSubmit()" #customerInfo="ngForm">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="model.name"
+          name="name"
+          #name="ngModel"
+        />
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          姓名欄必填
+        </div>
+      </div>
 
-    <form>
-      <p class="margin-right">
-        <label for="family-name">姓氏</label>
-        <input type="text" id="family-name" placeholder="王" />
-      </p>
-
-      <p class="float-right">
-        <label for="given-name">名字</label>
-        <input type="text" id="given-name" placeholder="小明" />
-      </p>
-
-      <p class="full">
+      <div class="form-group">
         <label for="phone">電話</label>
-        <input type="tel" id="phone" placeholder="0912-345-678" />
-      </p>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          required
+          [(ngModel)]="model.phone"
+          name="phone"
+          #phone="ngModel"
+        />
+        <div
+          [hidden]="phone.valid || phone.pristine"
+          class="alert alert-danger"
+        >
+          電話必填
+        </div>
+      </div>
 
-      <p class="address full">
+      <div class="form-group">
+        <label for="power">區域</label>
+        <select
+          class="form-control"
+          id="city"
+          required
+          [(ngModel)]="model.city"
+          name="city"
+          #city="ngModel"
+        >
+          <option *ngFor="let pow of citys" [value]="pow">{{ pow }}</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="address">地址</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="model.address"
+          name="address"
+          #address="ngModel"
+        />
+        <div
+          [hidden]="address.valid || address.pristine"
+          class="alert alert-danger"
+        >
+          地址必填
+        </div>
+      </div>
 
-        <select name="city" id="city">
-          <option value="高雄市">高雄市</option>
-        </select>
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!customerInfo.form.valid"
+        (click)="submit(customerInfo)"
+      >
+        送出
+      </button>
+      &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" (click)="newOrder()">
+        重新填寫
+      </button>
 
-        <select class="float-right" name="county" id="county">
-          <option value="新興區">新興區</option>
-        </select>
-
-        <input type="text" id="address" placeholder="幸福路 520 號" />
-      </p>
+      <!-- NOT SHOWN IN DOCS -->
+      <!-- <div>
+        <hr />
+        Name via form.controls = {{ showFormControls(customerInfo) }}
+      </div> -->
+      <!-- - -->
     </form>
-
-    <p class="full button">
-     <a >下一步 </a>
-    </p>
   </div>
-
-
+</div>

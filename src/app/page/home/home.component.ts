@@ -58,14 +58,14 @@ export class HomeComponent implements OnInit {
     this.getProduct();
   }
   clickChangePage(value){
-    console.log('clickChangePage:',value);
+    // console.log('clickChangePage:',value);
 
     this.apiService.onChangePage(value);
     this.getProduct();
   }
 
   clickchangePageSize(value){
-    console.log('clickchangePageSize:',value);
+    // console.log('clickchangePageSize:',value);
     this.apiService.onChangePageSize(value);
     this.getProduct();
   }

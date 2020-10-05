@@ -6,22 +6,26 @@ import { Order } from 'src/app/order';
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.scss']
 })
-export class OrderFormComponent{
+export class OrderFormComponent implements OnInit{
+
 
   citys = ['台北', '新北',
-            '台中', '高雄'];
+  '台中', '高雄'];
 
-  model = new Order(18, 'Dr IQ', '09123456789', this.citys[0]);
+  model = new Order(18, 'Dr IQ', '09123456789', this.citys[0],);
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
 
+  ngOnInit(): void {
+  }
+
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
   newOrder() {
-    this.model = new Order(42, '', '11', '');
+    this.model = new Order(42, '', '', '');
   }
 
   skyDog(): Order {

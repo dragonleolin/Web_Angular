@@ -66,7 +66,7 @@ export class ApiService {
       price: price,
       unit: unit,
       imgPath: imgPath,
-      qty: 1
+      qty: 1,
     };
 
     if (localStorage.getItem('cart')) {

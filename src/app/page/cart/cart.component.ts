@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
   }
 
   getCartData() {
-    if (localStorage.getItem('cart')) {
+    // if (localStorage.getItem('cart')) {
       this.sub_total = 0;
       this.cartTemp = JSON.parse(localStorage.getItem('cart'));
       // tslint:disable-next-line: prefer-for-of
@@ -36,7 +36,7 @@ export class CartComponent implements OnInit {
         this.s_price = this.cartTemp[i].price * this.cartTemp[i]['qty'];
         this.sub_total += this.s_price;
       }
-    }
+    // }
     this.total = this.sub_total + 300;
   }
 
@@ -101,6 +101,19 @@ export class CartComponent implements OnInit {
         .post<any>(url, body, options)
         .subscribe((res) => {
           console.log('checkout:', res);
+          // if(res){
+          //   const name = res.name;
+          //   console.log('name:', name);
+
+          //   this.cartTemp.findIndex((item) => {
+          //     if (item.name === name) {
+          //       return item.order_id = res.order_id;
+          //     }
+          //   });
+          //   console.log('this.cartTemp:', this.cartTemp);
+
+          //   localStorage.setItem('cart', JSON.stringify(this.cartTemp));
+          // }
         });
     }
 
