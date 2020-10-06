@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutAsideComponent implements OnInit {
 
+  cartTemp = (localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')):{
+    cartTemp: []
+  }
+
+  total = (localStorage.getItem('total')) ? JSON.parse(localStorage.getItem('total')):{
+    cartTemp: []
+  }
+
   constructor() { }
 
   ngOnInit() {
+    console.log('cartTemp:', this.cartTemp);
+
   }
+
+
+
 
 }

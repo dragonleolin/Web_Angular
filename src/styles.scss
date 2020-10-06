@@ -1,4 +1,3 @@
-
 /* You can add global styles to this file, and also import other style files */
 
 body {
@@ -9,7 +8,7 @@ body {
   flex-direction: column;
 }
 
-$main_color: #3F5D45;
+$main_color: #3f5d45;
 $secode_color: #718775;
 $third_color: #979d9d;
 $text_color: #2d3a3a;
@@ -18,7 +17,7 @@ $yellow: #ffc408;
 $grey: #979d9d;
 $white: #ffffff;
 $darkBlue: #1f3547;
-$darkGreen: #3F5D45;
+$darkGreen: #3f5d45;
 $lightGreen: #718775;
 $big_text: 32px;
 $title: 28px;
@@ -70,66 +69,64 @@ $phones-media: 479px;
 .header {
   // background-color: #a688f1;
   opacity: 0.6;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   cursor: pointer;
   @include phone-width {
     min-height: 10vh;
   }
-    svg {
-      height: 80px;
-      width: 80px;
-      @include pad-width {
-        height: 70px;
-        width: 70px;
-      }
-      @include small-pad-width {
-        height: 70px;
-        width: 70px;
-      }
-      @include phone-width {
-        height: 50px;
-        width: 50px;
-      }
+  svg {
+    height: 80px;
+    width: 80px;
+    @include pad-width {
+      height: 70px;
+      width: 70px;
     }
-
-    h1 {
-      margin: 20px;
-      margin-left: 100px;
-      color: $main_color;
-      text-shadow: 0 0 5px $secode_color, 0 0 10px $secode_color, 0 0 20px $secode_color,
-        0 0 40px $secode_color;
-      animation: neon-shine 2s linear infinite;
+    @include small-pad-width {
+      height: 70px;
+      width: 70px;
     }
+    @include phone-width {
+      height: 50px;
+      width: 50px;
+    }
+  }
 
-    ul{
-      display:flex;
-      margin: 10px;
-      li{
-        list-style: none;
-        padding: 20px;
-        a{
-          text-decoration: none;
-          font-size:$title;
-          line-height: 30px;
-          color: $main_color;
-          &:hover {
-              color: $secode_color;
-              transition: .3s;
-          }
+  h1 {
+    margin: 20px;
+    margin-left: 100px;
+    color: $main_color;
+    text-shadow: 0 0 5px $secode_color, 0 0 10px $secode_color,
+      0 0 20px $secode_color, 0 0 40px $secode_color;
+    animation: neon-shine 2s linear infinite;
+  }
 
-        }
-        img{
-          width: 24px;
-          height: 24px;
+  ul {
+    display: flex;
+    margin: 10px;
+    li {
+      list-style: none;
+      padding: 20px;
+      a {
+        text-decoration: none;
+        font-size: $title;
+        line-height: 30px;
+        color: $main_color;
+        &:hover {
+          color: $secode_color;
+          transition: 0.3s;
         }
       }
+      img {
+        width: 24px;
+        height: 24px;
+      }
     }
-
+  }
 }
 
 .cardContext {
-  margin-top:50px;
+  margin-top: 50px;
   margin: 15px auto;
   width: 900px;
   column-count: 3;
@@ -142,7 +139,7 @@ $phones-media: 479px;
     border: 1px solid #000;
   }
 
-  button{
+  button {
     width: 100%;
     display: block;
     font-size: 24px;
@@ -150,38 +147,35 @@ $phones-media: 479px;
     padding: 0;
     cursor: pointer;
   }
-
 }
 
-.selectPage{
+.selectPage {
   display: flex;
   justify-content: center;
-  span{
+  span {
     color: $text_color;
     font-size: $content;
   }
 }
 
-
-
 //分頁按鈕
-.page{
+.page {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  padding:10px;
+  padding: 10px;
   list-style: none;
-  .arrow{
+  .arrow {
     display: block;
     padding: 16px;
-    border: 1px solid #EAF0ED;
+    border: 1px solid #eaf0ed;
   }
-  .number{
+  .number {
     display: flex;
   }
-  button{
+  button {
     cursor: pointer;
     &:hover {
       border: 1px solid $secode_color;
@@ -189,25 +183,23 @@ $phones-media: 479px;
     }
   }
   .pageNum {
-      display: block;
-      font-size: 20px;
-      color:$main_color;
-      text-align: center;
-      border: 1px solid #EAF0ED;
-      font-weight: 300;
-      text-decoration:none;
-      padding: 15px 23px;
+    display: block;
+    font-size: 20px;
+    color: $main_color;
+    text-align: center;
+    border: 1px solid #eaf0ed;
+    font-weight: 300;
+    text-decoration: none;
+    padding: 15px 23px;
   }
-
 }
 
-.cartContainer{
+.cartContainer {
   max-width: 1200px;
   padding: 30px 30px 39px;
   margin: 0px auto;
   overflow: hidden;
   display: flex;
-
 
   /* 購物車區域 */
   article {
@@ -220,22 +212,19 @@ $phones-media: 479px;
       margin-bottom: 13px;
     }
 
-
-
-
-    .cart-item{
+    .cart-item {
       overflow: hidden;
       padding: 20px 0px;
       border-bottom: $yellow 1px solid;
       display: flex;
-      img{
+      img {
         width: 100px;
         height: 100px;
         margin: 15px;
         margin-right: 30px;
       }
 
-      i{
+      i {
         size: 7px;
       }
 
@@ -243,7 +232,7 @@ $phones-media: 479px;
         border-bottom: none;
       }
 
-      p{
+      p {
         font-size: 24px;
         width: 150px;
         background-size: cover;
@@ -256,10 +245,10 @@ $phones-media: 479px;
         height: 110px;
       }
 
-      > p,.description {
+      > p,
+      .description {
         float: left;
       }
-
 
       p:first-child {
         width: 110px;
@@ -268,27 +257,25 @@ $phones-media: 479px;
         margin-right: 39px;
       }
 
-
       .description {
         height: 110px;
         width: 107px;
         margin-right: 39px;
         .content {
-         display: flex;
-         flex-direction: column;
-         align-self: center;
+          display: flex;
+          flex-direction: column;
+          align-self: center;
           p:first-child {
             font-size: 24px;
             line-height: 28px;
           }
-          h5{
+          h5 {
             display: block;
             line-height: 20px;
             margin-top: 20px;
           }
         }
       }
-
 
       > p:first-child {
         width: 110px;
@@ -322,7 +309,7 @@ $phones-media: 479px;
     }
   }
 
-  aside{
+  aside {
     width: 260px;
     padding: 0px 20px;
     h2 {
@@ -357,85 +344,84 @@ $phones-media: 479px;
         background-color: $secode_color;
         display: block;
         cursor: pointer;
-        &:hover{
+        &:hover {
           background-color: $main_color;
           color: $white;
-          opacity: .6;
+          opacity: 0.6;
         }
       }
-
     }
   }
 }
 
-.checkoutAside{
-    margin: 0 auto;
-    width:300px;
-    display:flex;
-    flex-direction:column;
-    font-family:微軟正黑體;
-    color: #829886;
-    margin-top:20px;
+.checkoutAside {
+  margin: 0 auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  font-family: 微軟正黑體;
+  color: #829886;
+  margin-top: 20px;
 
-    .title{
-      // margin-top:10px;
-      background-color: #e7eeea;
-      font-size: 32px;
-      // border: 1px solid #000;
-      text-align:center;
-      line-height: 72px;
-      font-weight: 600;
-    }
-     h3{
-          font-size:20px;
-          font-weight: 600;
-          line-height: 10vh;
-            }
+  .title {
+    // margin-top:10px;
+    background-color: #e7eeea;
+    font-size: 32px;
+    // border: 1px solid #000;
+    text-align: center;
+    line-height: 72px;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 25px;
+  }
 
-    .orderSummary{
-      border:1px solid #e7eeea;
-      margin-bottom: 20px;
-      .text{
-        display:flex;
-        justify-content: space-between;
-        margin: 10px;
-        p{
-          line-height: 30px;
-        }
-        .left{
-          text-align:left;
-        }
-        .right{
-          text-align:right;
-        }
+  .orderSummary {
+    border: 1px solid #e7eeea;
+    margin-bottom: 20px;
+    .text {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+      p {
+        line-height: 30px;
+      }
+      .left {
+        text-align: left;
+      }
+      .right {
+        text-align: right;
       }
     }
+  }
 
-    .shoppingList{
-      border:1px solid #e7eeea;
-      .item{
-        display:flex;
-        margin: 15px 0;
-        img{
-         margin: 0 20px;
-        }
-        .text{
-          margin: auto 0;
-
-          }
-        }
+  .shoppingList {
+    border: 1px solid #e7eeea;
+    .item {
+      display: flex;
+      margin: 15px 0;
+      img {
+        margin: 0 20px;
+        width: 80px;
+        height: 80px;
       }
+      .text {
+        margin: auto 0;
+      }
+    }
+  }
 }
 
-.customerInfo{
+.customerInfo {
   width: 600px;
   margin: 30px;
 }
 
-.checkoutPage{
+.checkoutPage {
   margin: 0 auto;
   width: 900px;
   display: flex;
   justify-content: center;
-
 }

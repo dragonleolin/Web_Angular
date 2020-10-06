@@ -81,8 +81,6 @@ export class HomeComponent implements OnInit {
     unit: string,
     imgPath: string
   ) {
-    // console.log('addCart:', imgPath);
-
     this.apiService.setCartDetail(id, name, price, unit, imgPath);
     this.router.navigateByUrl('cart');
   }

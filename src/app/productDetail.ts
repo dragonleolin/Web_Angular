@@ -6,4 +6,5 @@ export interface ProductDetail {
   unit: string;
   imgPath: string;
   order_id: string;
+  sub_total: number;
 }

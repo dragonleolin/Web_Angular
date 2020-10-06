@@ -1,47 +1,31 @@
-<div class="checkoutAside">
-      <div class="orderSummary">
-        <h2 class="title">
-          訂單摘要
-        </h2>
-        <div class="text">
-           <div class="left">
-          <p>小計</p>
-          <p>運費</p>
-          <h3>總計</h3>
-        </div>
-        <div class="right">
-          <p>NT$ 2,700</p>
-          <p>NT$ 300</p>
-          <h3>NT$ 3,000</h3>
-        </div>
-       </div>
-
+<div class="checkoutAside" >
+  <div class="orderSummary">
+    <h2 class="title">訂單摘要</h2>
+    <div class="text">
+      <div class="left">
+        <p>小計</p>
+        <p>運費</p>
+        <h3>總計</h3>
       </div>
-      <div class="shoppingList">
-         <h2 class="title">
-          購物清單
-        </h2>
-        <div class="item">
-           <img src="https://hexschool.github.io/flexImgUrl/9/pic.png" alt="">
-          <div class="text">
-            <p>焦糖馬卡龍 (2)</p>
-            <h3>NT$ 900</h3>
-          </div>
-        </div>
-         <div class="item">
-           <img src="https://hexschool.github.io/flexImgUrl/9/pic.png" alt="">
-          <div class="text">
-            <p>焦糖馬卡龍 (2)</p>
-            <h3>NT$ 900</h3>
-          </div>
-        </div>
-         <div class="item">
-           <img src="https://hexschool.github.io/flexImgUrl/9/pic.png" alt="">
-          <div class="text">
-            <p>焦糖馬卡龍 (2)</p>
-            <h3>NT$ 900</h3>
-          </div>
-        </div>
+      <div class="right">
+        <p>NT$ {{ total}}</p>
+        <p>NT$ 200</p>
+        <h3>NT$ {{ total + 200 }}</h3>
       </div>
-
+    </div>
   </div>
+  <div class="shoppingList">
+    <h2 class="title">購物清單</h2>
+    <div class="item" *ngFor="let item of cartTemp; index as i">
+      <img
+        src="data:image/jpg;base64,{{ item.imgPath }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="text">
+        <p>{{ item.name }}</p>
+        <h3>NT$ {{ item.price * item.qty }}</h3>
+      </div>
+    </div>
+  </div>
+</div>

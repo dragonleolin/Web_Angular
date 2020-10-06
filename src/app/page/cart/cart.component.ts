@@ -101,19 +101,19 @@ export class CartComponent implements OnInit {
         .post<any>(url, body, options)
         .subscribe((res) => {
           console.log('checkout:', res);
-          // if(res){
-          //   const name = res.name;
-          //   console.log('name:', name);
-
-          //   this.cartTemp.findIndex((item) => {
-          //     if (item.name === name) {
-          //       return item.order_id = res.order_id;
-          //     }
-          //   });
-          //   console.log('this.cartTemp:', this.cartTemp);
-
-          //   localStorage.setItem('cart', JSON.stringify(this.cartTemp));
-          // }
+          if(res){
+            const product_id = res.product_id;
+            console.log('product_id:', product_id);
+            this.cartTemp.findIndex((item) => {
+              if (item.id === product_id) {
+                item.order_id = res.order_id;
+                return;
+              }
+            });
+            localStorage.setItem('cart', JSON.stringify(this.cartTemp));
+            localStorage.setItem('total', JSON.stringify(this.sub_total));
+          }
+          this.router.navigateByUrl('checkout');
         });
     }
 
