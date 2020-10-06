@@ -78,7 +78,8 @@ export class CustomerInfoComponent {
 
     this.http.post<any>(url, body, options).subscribe((res) => {
       console.log('customerInfo:', res);
-
+      localStorage.removeItem('cart');
+      localStorage.removeItem('total');
     });
   }
 }
