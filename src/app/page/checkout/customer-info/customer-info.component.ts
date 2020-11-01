@@ -80,6 +80,7 @@ export class CustomerInfoComponent {
       console.log('customerInfo:', res);
       localStorage.removeItem('cart');
       localStorage.removeItem('total');
+      this.router.navigateByUrl('home');
     });
   }
 }
