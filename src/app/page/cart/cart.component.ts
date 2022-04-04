@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
         this.sub_total += this.s_price;
       }
     // }
-    this.total = this.sub_total + 300;
+    this.total = this.sub_total + 200;
   }
 
   deleteOne(name: string) {

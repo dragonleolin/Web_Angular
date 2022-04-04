@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ApiService } from './../../api.service';
 import { Router } from '@angular/router';
 
@@ -17,6 +17,11 @@ export class HomeComponent implements OnInit {
   pageSizes = [6, 8, 12];
   pgaes = [1];
   curPage = 1; //当前页
+  scroll: boolean = false;
+  total = [1,2];
+  animationDuration: number = 10;
+  active = 0;
+  preActive = 0;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -70,7 +75,32 @@ export class HomeComponent implements OnInit {
     this.getProduct();
   }
 
+  @HostListener('window:scroll') onElementScroll($event: Event): void {
+    //console.log('scroll=' + window.scrollY);
+    if (window.scrollY > 0) {
+      this.scroll = true;
+    }
+    if (window.scrollY == 0) {
+      this.scroll = false;
+    }
+  }
 
+  img = (n: number) => {
+    return {
+      backgroundImage: `url(https://picsum.photos/1920/1200?random=1${n})`,
+      animationDuration: ` ${this.animationDuration}s`,
+      animationDelay: `${((n - 1) * this.animationDuration) / 2}s`,
+    };
+  };
+
+
+  getBlueClass = () => {
+    if (this.scroll) {
+      return 'kv scroll';
+    } else {
+      return 'kv';
+    }
+  };
 
 
 
